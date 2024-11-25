@@ -1,0 +1,25 @@
+﻿@model UserResponse
+<form asp-action="Rsvp">
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"></span>
+    <br />
+    <input asp-for="LastName" />
+    <span asp-validation-for="LastName"></span>
+    <br />
+    <input asp-for="Password" />
+    <span asp-validation-for="Password"></span>
+    <br />
+
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+    <br />
+    <select asp-for="IsComing">
+        <option value="">Seçiniz</option>
+        <option value="True">Evet</option>
+        <option value="False">Hayır</option>
+    </select>
+    <span asp-validation-for="IsComing"></span>
+    <br />
+    <button type="submit">Gönder</button>
+
+</form>

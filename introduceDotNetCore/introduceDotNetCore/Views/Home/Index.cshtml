@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_Layout";
+    int counter = 0;
+}
+
+
+    <p>Hoşgeldin @ViewBag.Name</p>
+    @if (ViewBag.Hour <12)
+    {
+        <p>Günaydın</p>
+    }
+    else
+    {
+        <p>İyi günler</p>
+    }
+    <ul>
+    @foreach (dynamic item in ViewBag.Countries)
+    {
+        <li>@item.ToUpper()</li>
+    }
+    </ul>
+
+    <a asp-controller="Home" asp-action="Rsvp" class="btn btn-success">tıklayın</a>
+
