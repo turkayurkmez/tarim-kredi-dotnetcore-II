@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFReverseEngineering", "EFReverseEngineering\EFReverseEngineering.csproj", "{EA60A4A2-F3CF-4204-B9A8-8560C393309D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA60A4A2-F3CF-4204-B9A8-8560C393309D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA60A4A2-F3CF-4204-B9A8-8560C393309D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA60A4A2-F3CF-4204-B9A8-8560C393309D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA60A4A2-F3CF-4204-B9A8-8560C393309D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D425864-458A-4336-8338-165AA6BEABAC}
+	EndGlobalSection
+EndGlobal
