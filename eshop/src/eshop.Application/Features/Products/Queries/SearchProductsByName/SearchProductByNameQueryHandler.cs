@@ -11,11 +11,16 @@ namespace eshop.Application.Features.Products.Queries.SearchProductsByName
 {
     internal class SearchProductsByNameQueryHandler(IProductRepository productRepository) : IRequestHandler<SearchProductsByNameRequest, SearchProductsByNameResponse>
     {
-        public Task<SearchProductsByNameResponse> Handle(SearchProductsByNameRequest request, CancellationToken cancellationToken)
+        public async Task<SearchProductsByNameResponse> Handle(SearchProductsByNameRequest request, CancellationToken cancellationToken)
         {
-            var products = productRepository.SearchByName(request.Name);
+            var products = await productRepository.SearchByName(request.Name);
             var result = products.Adapt<IEnumerable<ProductSearchDto>>();
-            return Task.FromResult(new SearchProductsByNameResponse(result, State: "İşlem başarılı", result.Count()));
+
+            var count = result.Count();
+            string state = count > 0 ? $"adında {request.Name} geçen {count} adet ürün bulundu " : $"{request.Name} geçen hiçbir ürün bulunamadı";
+            var response = new SearchProductsByNameResponse(result,State:state, count);
+            return response;
+          
 
         }
     }

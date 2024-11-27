@@ -37,9 +37,15 @@ namespace eshop.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Product>> SearchByName(string name)
+        public async Task<IEnumerable<Product>> SearchByName(string name)
         {
-            throw new NotImplementedException();
+            var products = new List<Product>()
+            {
+                new Product() { Id = 1, Name = "Product 1", Price = 10, Description = "Ürün 1 Açıklama", ImageUrl = "testimage" },
+                new Product() { Id = 2, Name = "Product 2", Price = 20, Description = "Ürün 2 Açıklama", ImageUrl = "testimage" },
+            };
+
+            return await Task.FromResult(products);
         }
 
         public Task UpdateAsync(Product entity)

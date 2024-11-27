@@ -20,10 +20,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<GetProductsRequest>());
-builder.Services.AddScoped<IProductRepository, FakeProductRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("db");
-builder.Services.AddDbContext<TKEshopDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<TKEshopDbContext>(options =>
+{
+    options.UseSqlServer(connectionString);
+    
+});
 
 var app = builder.Build();
 
