@@ -1,0 +1,16 @@
+@MessagingCatalog_HostAddress = https://localhost:7121
+
+GET {{Messaging.Catalog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{MessagingCatalog_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "ProducId":1,
+  "Discount":0.15
+}
+
+###
