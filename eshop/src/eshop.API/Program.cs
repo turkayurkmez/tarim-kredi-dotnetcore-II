@@ -1,12 +1,9 @@
-
-
-
-using eshop.Application;
-using eshop.Application.Contracts;
-using eshop.Application.Features.Products.Queries.GetProducts;
+﻿using eshop.API.Extensions;
 using eshop.Infrastructure.Data;
-using eshop.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,16 +15,25 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<GetProductsRequest>());
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 
 var connectionString = builder.Configuration.GetConnectionString("db");
-builder.Services.AddDbContext<TKEshopDbContext>(options =>
-{
-    options.UseSqlServer(connectionString);
-    
-});
+builder.Services.AddNeccessaryInjections(connectionString);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "server",
+            ValidAudience = "client",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("dönülmez-akşamın-ufkundayım-vakit-çok-geç"))
+        };
+    });
 
 var app = builder.Build();
 
@@ -47,6 +53,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

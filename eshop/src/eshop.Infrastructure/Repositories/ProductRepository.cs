@@ -2,11 +2,6 @@
 using eshop.Domain;
 using eshop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eshop.Infrastructure.Repositories
 {
@@ -38,7 +33,7 @@ namespace eshop.Infrastructure.Repositories
 
         public async Task<IEnumerable<Product>> SearchByName(string name)
         {
-           return await dbContext.Products.Where(x => x.Name.Contains(name)).ToListAsync();
+            return await dbContext.Products.Where(x => x.Name.Contains(name)).ToListAsync();
         }
 
         public async Task UpdateAsync(Product entity)

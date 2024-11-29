@@ -1,0 +1,23 @@
+﻿@minimalApiSample_HostAddress = https://localhost:7050
+
+GET {{minimalApiSample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### Aşağıdaki request, todo listesini getirir.
+
+GET {{minimalApiSample_HostAddress}}/todos
+
+###
+
+POST {{minimalApiSample_HostAddress}}/todos
+Content-Type: application/json
+
+{
+  "name":"minimal api öğren",
+  "isCompleted": true
+}
+###
+
+GET {{minimalApiSample_HostAddress}}/todos/complete
+
+###

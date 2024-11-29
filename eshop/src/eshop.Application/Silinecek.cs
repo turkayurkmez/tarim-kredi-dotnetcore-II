@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace eshop.Application
+﻿namespace eshop.Application
 {
-	public class Oyuncu
-	{
-		public void Giy(IKiyafet ust)
-		{
+    public class Oyuncu
+    {
+        public void Giy(IKiyafet ust)
+        {
 
-		}
-	}
-	public interface IKiyafet
+        }
+    }
+    public interface IKiyafet
     {
         public void Giy();
     }
@@ -24,9 +18,9 @@ namespace eshop.Application
             throw new NotImplementedException();
         }
     }
-    public class Kazak :UstGiyim { }
-	public class KirmiziKazak: Kazak
-	{
+    public class Kazak : UstGiyim { }
+    public class KirmiziKazak : Kazak
+    {
 
-	}
+    }
 }
